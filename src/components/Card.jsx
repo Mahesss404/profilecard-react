@@ -1,5 +1,12 @@
-const CardProfile = ({ avatar, name, bio, job}) => {
+import Button from "@mui/material/Button"
+import FavoriteIcon from '@mui/icons-material/Favorite';
+import { useState } from "react";
 
+const CardProfile = ({ avatar, name, bio, job}) => {
+    const [liked, setLiked] = useState(false)
+    const toggleLike = () => {
+        setLiked(prev => !prev)
+    }
     return (
         <div className="shadow-lg border-2 border-gray-300 flex w-[400px] h-[600px] p-2 flex-col items-start gap-[10px] rounded-4xl">
             <div className="relative flex flex-col justify-end flex-1 self-stretch ">
@@ -14,9 +21,12 @@ const CardProfile = ({ avatar, name, bio, job}) => {
                         <p className="text-primary font-light text-md">{bio}</p>
                     </div>
                     <div className="flex w-full justify-between items-center">
-                        <p className="text-primary font-light text-md">liked</p>
+                        <p className="text-primary font-light text-md gap-2">
+                        <FavoriteIcon  onClick={toggleLike} className={`text-3xl transition-colors duration-300 ${ liked ? "text-red-500" : "text-gray-400" }`}/>liked</p>
                         <p className="text-primary font-light text-md">User</p>
-                        <button className="bg-blue-400 py-2 px-4 rounded-2xl self-stretch">Lorem</button>
+                        <Button variant="contained" className="gap-2">
+                          
+                         Lorem</Button>
                     </div>
                 </div>
 
